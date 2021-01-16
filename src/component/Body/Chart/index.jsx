@@ -16,7 +16,7 @@ function Chart(props) {
   const { data } = props
 
   let fetchQuantity = data.map(item => item.quantity);
-  let fetchDate = data.map(item => item.id);
+  let fetchDate = data.map(item => item.date);
 
   return (
 
@@ -43,6 +43,7 @@ function Chart(props) {
           ]
         }}
         options={{
+          responsive: true,
           maintainAspectRatio: false,
         }}
         height={367}

@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "date": "Monday",
+      "quantity": 20
+    },
+    {
+      "date": "Tuesday",
+      "quantity": 12
+    },
+    {
+      "date": "Wednesday",
+      "quantity": 40
+    },
+    {
+      "date": "Thursday",
+      "quantity": 57
+    },
+    {
+      "date": "Friday",
+      "quantity": 19
+    },
+    {
+      "date": "Saturday",
+      "quantity": 35
+    },
+    {
+      "date": "Sunday",
+      "quantity": 8
+    }
+  ]
+}
