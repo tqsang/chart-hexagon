@@ -1,7 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Header.scss';
-
-import ClassNames from 'classnames';
 
 Header.propTypes = {
 
@@ -9,6 +7,10 @@ Header.propTypes = {
 
 function Header(props) {
   const [read, setRead] = useState(true);
+
+  useEffect(() => {
+    document.title = "Chart"
+  }, [])
 
   return (
     <div className="header">
