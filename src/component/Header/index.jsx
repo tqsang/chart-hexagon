@@ -1,19 +1,27 @@
-import React from 'react';
+import { useState } from 'react';
 import './Header.scss';
+
+import ClassNames from 'classnames';
 
 Header.propTypes = {
 
 };
 
 function Header(props) {
+  const [read, setRead] = useState(true);
+
   return (
     <div className="header">
       <div className="header__title">
         tra cứu giá đơn vị
       </div>
       <div className="header__description">
-        Nhằm cung cấp cho bạn đầy đủ thông tin về giá trị quỹ trong cả hiện tại và quá khứ, bạn có thể tùy chọn thời điểm <br /> tra cứu theo khung thời gian bạn muốn
+        <p>
+          Nhằm cung cấp cho bạn đầy đủ thông tin về giá trị quỹ trong cả hiện tại và quá khứ, bạn có thể tùy chọn thời điểm tra cứu{read && <span className="content"> theo khung thời gian bạn muốn </span>}
+          {read && <span className="more" onClick={() => setRead(false)}>...Xem thêm</span>}
+        </p>
       </div>
+
     </div>
   );
 }

@@ -5,27 +5,47 @@
   text-align: center;
 
   margin-top: 77px;
+
+  font-family: 'Segoe UI';
   &__title {
 
-    font-family: 'Arial';
+
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 26px;
     line-height: 30px;
     text-transform: uppercase;
     color: #E87722;
   }
   &__description {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
 
     margin-top: 18px;
 
-    font-family: 'Arial';
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 24px;
     
     color: #0A3B32;
+    p {
+      width: 820px;
+    }
+
+  }
+}
     
+.more {
+  display: none;
+}
+
+@media only screen and (max-width: 740px) {
+  .more {
+    display: inline;
+    cursor: pointer;
+    color: #E87722;
   }
 }

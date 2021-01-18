@@ -24,3 +24,39 @@
     }
   }
 }
+
+@media only screen and (max-width: 740px) {
+  .s__body{
+    .body {
+      margin: 0px;
+      padding: 0px 20px;
+      background-color: white;
+
+    }
+    .footer {
+      .btn {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 740px) and (max-width: 990px){
+  .s__body{
+    .footer {
+      .btn {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .s__body {
+    .body {
+      margin: 0px;
+      padding: 0px 20px;
+      background-color: white;
+
+    }
+  }
+}

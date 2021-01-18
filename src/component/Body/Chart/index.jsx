@@ -27,24 +27,38 @@ function Chart(props) {
           labels: fetchDate,
           datasets: [
             {
-              label: 'Quỹ A',
+              label: 'PEPSI',
               data: fetchQuantity,
               backgroundColor: 'rgba(255, 99, 132, 0.2)',
               borderColor: 'rgba(255, 99, 132, 1)',
               borderWidth: 3,
             },
-            // {
-            //   label: 'second week',
-            //   data: [20, 30, 10, 8, 40, 10],
-            //   backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            //   borderColor: 'rgba(54, 162, 235, 1)',
-            //   borderWidth: 3,
-            // }
           ]
         }}
         options={{
           responsive: true,
           maintainAspectRatio: false,
+
+          scales: {
+            xAxes: [{
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: 'Day of week'
+              }
+            }],
+            yAxes: [{
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: 'Quantity'
+              },
+              ticks: {
+                suggestedMin: 50,
+                suggestedMax: 100
+              }
+            }]
+          }
         }}
         height={367}
         width={1000}

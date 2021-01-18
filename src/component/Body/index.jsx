@@ -6,38 +6,23 @@ import Search from './Search';
 
 import DATA from '../../constants/data.json';
 
-
 Body.propTypes = {
 
 };
-
-function randomDate() {
-  const week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-  const randomIndex = Math.trunc(Math.random() * 7);
-
-  return week[randomIndex]
-
-  // const newDate = [...DATA.data];
-
-  // const dayOfWeek = week[week.length % newDate.length];
-
-  // newDate.push(dayOfWeek);
-
-  // console.log('123', DATA.data.length);
-
-  // return dayOfWeek;
-
-
-}
 
 function randomData() {
   return Math.trunc(Math.random() * 100);
 }
 
 function Body(props) {
-
   const [data, setData] = useState(DATA.data);
   const [change, setChange] = useState(false);
+
+  function randomDate() {
+    const week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    let date = week[data.length % week.length];
+    return date;
+  }
 
   const handleAddData = () => {
     let newData = [...data];
@@ -52,9 +37,7 @@ function Body(props) {
   const handleRemoveData = () => {
     const newData = [...data];
     newData.pop();
-
     setData(newData);
-
   }
 
   useEffect(() => {
@@ -62,7 +45,9 @@ function Body(props) {
       if (change) {
         handleAddData();
       }
-
+      else {
+        clearInterval(useInterval);
+      }
     }, 1000);
 
     return () => {
@@ -79,11 +64,10 @@ function Body(props) {
       </div>
       <div className="footer">
         <Button onClick={handleAddData}>Add</Button>
-        <Button onClick={() => setChange(prevChange => !prevChange)}>Add Interval</Button>
+        <Button onClick={() => setChange(prevChange => !prevChange)}>{change ? 'Stop Add Interval' : 'Add Interval'}</Button>
         <Button onClick={handleRemoveData} color="danger">Remove</Button>
       </div>
     </div>
-
   );
 }
 
