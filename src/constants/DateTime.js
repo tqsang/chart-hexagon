@@ -10,10 +10,3 @@ function getDate() {
 const DATE = getDate();
 
 export default DATE;
-// function getMonth() {
-//   const month=[];
-//   for(let i=0;i<12;i++){
-//     month.push({value:i, label: i+1});
-//   }
-//   return month;
-// }

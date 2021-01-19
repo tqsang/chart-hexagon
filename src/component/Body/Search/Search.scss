@@ -63,6 +63,9 @@
     &__icon {
       font-size: 28px;
 
+      display: flex;
+      align-items: center;
+
       position: absolute;
       right: 20px;
 
@@ -76,7 +79,7 @@
 }
 
 // Mobile
-@media only screen and (max-width: 740px) {
+@media only screen and (max-width: 768px) {
 .background {
   margin-bottom: 0px;
     .search {
@@ -113,6 +116,12 @@
   .search{
     &__icon {
       display: none;
+      #Group_1{
+        display: none;
+      }
+      #Group_2{
+        display: none;
+      }
     }
     &__btn-search {
       margin-right: 24px;
@@ -120,36 +129,36 @@
   }
 }
 
-@media only screen and (min-width: 740px) and (max-width: 767px) {
-  .background {
-    margin-bottom: 0px;
-      .search {
-        flex-direction: column;
+// @media only screen and (min-width: 740px) and (max-width: 767px) {
+//   .background {
+//     margin-bottom: 0px;
+//       .search {
+//         flex-direction: column;
   
-        &__input-item {
-          margin-bottom: 14px;
-          margin-left: 0px;
+//         &__input-item {
+//           margin-bottom: 14px;
+//           margin-left: 0px;
           
-        }
-        &__input-option {
-          width: 100%;
-          #select {
-            height: 44px;
-          }
-        }
-        &__input-date {
-          width: 100%;
-          #date {
-            height: 44px;
-          }
-        }
-        &__btn-search {
-          width: 100%;
-          margin-right: 0px;
-        }
-        &__icon {
-          position: static;
-        }
-      }
-    }
-}
+//         }
+//         &__input-option {
+//           width: 100%;
+//           #select {
+//             height: 44px;
+//           }
+//         }
+//         &__input-date {
+//           width: 100%;
+//           #date {
+//             height: 44px;
+//           }
+//         }
+//         &__btn-search {
+//           width: 100%;
+//           margin-right: 0px;
+//         }
+//         &__icon {
+//           position: static;
+//         }
+//       }
+//     }
+// }

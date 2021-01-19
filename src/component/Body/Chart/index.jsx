@@ -32,14 +32,14 @@ function Chart(props) {
           labels: fetchDate,
           datasets: [
             {
-              label: 'PEPSI',
+              label: 'Quỹ A',
               data: fetchQuantity,
               backgroundColor: 'rgba(0,0,0,0)',
               borderColor: 'rgba(255, 99, 132, 1)',
               borderWidth: 3,
             },
             {
-              label: 'COCA',
+              label: 'Quỹ B',
               data: fetchQuantity1,
               backgroundColor: 'rgba(0,0,0,0)',
               borderColor: 'rgba(54, 162, 235, 1)',
