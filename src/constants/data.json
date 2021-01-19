@@ -1,29 +1,54 @@
 {
   "data": [
     {
-      "date": "Monday",
+      "date": "1/01",
       "quantity": 20
     },
     {
-      "date": "Tuesday",
+      "date": "2/01",
       "quantity": 12
     },
     {
-      "date": "Wednesday",
+      "date": "3/01",
       "quantity": 40
     },
     {
-      "date": "Thursday",
+      "date": "4/01",
       "quantity": 57
     },
     {
-      "date": "Friday",
+      "date": "5/01",
       "quantity": 19
     },
     {
-      "date": "Saturday",
+      "date": "6/01",
       "quantity": 35
     }
-
+  ],
+  "data1": [
+    {
+      "date": "1/01",
+      "quantity": 10
+    },
+    {
+      "date": "2/01",
+      "quantity": 40
+    },
+    {
+      "date": "3/01",
+      "quantity": 24
+    },
+    {
+      "date": "4/01",
+      "quantity": 67
+    },
+    {
+      "date": "5/01",
+      "quantity": 84
+    },
+    {
+      "date": "6/01",
+      "quantity": 43
+    }
   ]
 }

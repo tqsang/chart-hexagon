@@ -3,20 +3,25 @@ import React from 'react';
 import { Line } from 'react-chartjs-2';
 import './Chart.scss';
 
-
 Chart.propTypes = {
   data: PropTypes.array,
+  data1: PropTypes.array,
+
 };
 Chart.defaultProps = {
   data: [],
+  data1: [],
+
 }
 
 function Chart(props) {
 
-  const { data } = props
+  const { data, data1 } = props
 
   let fetchQuantity = data.map(item => item.quantity);
   let fetchDate = data.map(item => item.date);
+
+  let fetchQuantity1 = data1.map(item => item.quantity);
 
   return (
 
@@ -29,12 +34,20 @@ function Chart(props) {
             {
               label: 'PEPSI',
               data: fetchQuantity,
-              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              backgroundColor: 'rgba(0,0,0,0)',
               borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 3,
+            },
+            {
+              label: 'COCA',
+              data: fetchQuantity1,
+              backgroundColor: 'rgba(0,0,0,0)',
+              borderColor: 'rgba(54, 162, 235, 1)',
               borderWidth: 3,
             },
           ]
         }}
+
         options={{
           responsive: true,
           maintainAspectRatio: false,
@@ -44,7 +57,7 @@ function Chart(props) {
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: 'Day of week'
+                labelString: 'Date'
               }
             }],
             yAxes: [{
@@ -54,10 +67,9 @@ function Chart(props) {
                 labelString: 'Quantity'
               },
               ticks: {
-                suggestedMin: 50,
-                suggestedMax: 100
+                beginAtZero: true
               }
-            }]
+            }],
           }
         }}
         height={367}

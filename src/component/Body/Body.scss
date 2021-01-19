@@ -14,13 +14,37 @@
 
     margin-top: 20px;
 
+    .btn-danger{
+      &:hover {
+        color: red;
+      }
+    }
     .btn {
+      font-family: 'Segoe UI';
       margin-left: 10px;
+      width: 139px;
+      height: 44px;
+
+      text-transform: uppercase;
+      font-weight: 500;
+
+      &:hover {
+        background-color: #FFFFFF;
+
+      }
     }
     & :first-child, :nth-child(2) {
       background-color: #E87722;
       color: #FFFFFF;
       border: none;
+
+
+      &:hover {
+        background-color: #FFFFFF;
+        color:#E87722;
+        border: 1px solid #E87722;
+
+      }
     }
   }
 }
@@ -35,6 +59,7 @@
     }
     .footer {
       .btn {
+        height: 60px;
         margin-bottom: 20px;
       }
     }
