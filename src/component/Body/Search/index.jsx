@@ -16,7 +16,9 @@ function Search(props) {
             type="select"
             name="select"
             id="select">
-            <option>Tất cả các quỹ</option>
+            <option value="0">Tất cả các quỹ</option>
+            <option value="1">Quỹ A</option>
+            <option value="2">Quỹ B</option>
           </Input>
         </div>
         <div className="search__input-item search__input-date">

@@ -1,3 +1,42 @@
 .App {
   background: #FFFFFF;
+  font-family: 'FWDCircularVietTT-Book';
 }
+@font-face {
+  font-family: 'FWDCircularVietTT-Book';
+  src: url('./assets/fonts/FWDCircularVietTT-Book.eot');
+  src: url('./assets/fonts/FWDCircularVietTT-Book.eot?#iefix') format('embedded-opentype'),
+       url('./assets/fonts/FWDCircularVietTT-Book.svg#FWDCircularVietTT-Book') format('svg'),
+       url('./assets/fonts/FWDCircularVietTT-Book.ttf') format('truetype'),
+       url('./assets/fonts/FWDCircularVietTT-Book.woff') format('woff'),
+       url('./assets/fonts/FWDCircularVietTT-Book.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FWDCircularVietTT-Bold';
+  src: url('./assets/fonts/FWDCircularVietTT-Bold.eot');
+  src: url('./assets/fonts/FWDCircularVietTT-Bold.eot?#iefix') format('embedded-opentype'),
+       url('./assets/fonts/FWDCircularVietTT-Bold.svg#FWDCircularVietTT-Bold') format('svg'),
+       url('./assets/fonts/FWDCircularVietTT-Bold.ttf') format('truetype'),
+       url('./assets/fonts/FWDCircularVietTT-Bold.woff') format('woff'),
+       url('./assets/fonts/FWDCircularVietTT-Bold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'FWDCircularVietTT-Medium';
+  src: url('./assets/fonts/FWDCircularVietTT-Medium.eot');
+  src: url('./assets/fonts/FWDCircularVietTT-Medium.eot?#iefix') format('embedded-opentype'),
+       url('./assets/fonts/FWDCircularVietTT-Medium.svg#FWDCircularVietTT-Medium') format('svg'),
+       url('./assets/fonts/FWDCircularVietTT-Medium.ttf') format('truetype'),
+       url('./assets/fonts/FWDCircularVietTT-Medium.woff') format('woff'),
+       url('./assets/fonts/FWDCircularVietTT-Medium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+

@@ -28,10 +28,20 @@
     &__input-option {
       width: 236px;
 
-      #select {
+      select {
         height: 44px;
         color: #E87722;
-        font-family: 'Segoe UI';
+
+        appearance: none;
+        background-image: url(../../../assets/images/Shape.svg);
+        background-repeat: no-repeat;
+        background-position-x: 90%;
+        background-position-y: center;
+
+        option {
+          margin-left: 10px;
+        }
+
       }
     }
     &__input-date {
@@ -40,13 +50,23 @@
       #date {
         height: 44px;
         color: #E87722;
-        font-family: 'Segoe UI';
+        
+        background-image: url(../../../assets/images/Vector.svg);
+        background-repeat: no-repeat;
+        background-position-x: 90%;
+        background-position-y: center;
+      }
+      input[type="date"]::-webkit-inner-spin-button,
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        opacity: 0;
+
       }
     }
     &__btn-search {
       width: 139px;
 
-      font-weight: 500;
+      font-family: 'FWDCircularVietTT-Bold';
+      font-weight: 400;
   
       color: #FFFFFF;
       background-color: #E87722;
@@ -92,8 +112,9 @@
       }
       &__input-option {
         width: 100%;
-        #select {
+        select {
           height: 44px;
+          background-position-x: 95%;
         }
       }
       &__input-date {
