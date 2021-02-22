@@ -65,19 +65,23 @@
     &__btn-search {
       width: 139px;
 
+      font-size: 14px;
+      line-height: 24px;
       font-family: 'FWDCircularVietTT-Bold';
-      font-weight: 400;
+      font-weight: 700;
+      letter-spacing: 0.1em;
   
       color: #FFFFFF;
       background-color: #E87722;
-      border: 0px;
+      border: none;
 
-      &:hover {
+      &:hover, &:active {
         text-decoration: none;
 
-        color: #E87722;
-        background-color: #FFFFFF;
-        border: 1px solid #E87722;
+        color: #FFFFFF;
+        background-color: #ff6d00;
+
+        outline: none;
       }
     }
     &__icon {

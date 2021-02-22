@@ -31,7 +31,7 @@
       font-weight: 700;
 
       &:hover {
-        background-color: #FFFFFF;
+        background-color: #ff6d00;
 
       }
     }
@@ -40,15 +40,30 @@
       color: #FFFFFF;
       border: none;
 
+      &:hover, &:active {
+        background-color: #ff6d00;
+        color:#FFFFFF;
+        outline: none;
+      }
 
+    }
+    & :last-child {
+      background-color: #d61212;
+      color: #FFFFFF;
+      border: none;
       &:hover {
-        background-color: #FFFFFF;
-        color:#E87722;
-        border: 1px solid #E87722;
-
+        background-color: #ff0018;
+        color: #FFFFFF;
+        border: none;
       }
     }
   }
+}
+
+.disabled{
+  background-color: rgba(255,109,0,0.5);
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 @media only screen and (max-width: 740px) {

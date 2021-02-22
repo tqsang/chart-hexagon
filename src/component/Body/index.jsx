@@ -12,10 +12,11 @@ Body.propTypes = {
 };
 
 function Body(props) {
-  const [data, setData] = useState(DATA.data);
   const [change, setChange] = useState(false);
 
+  const [data, setData] = useState(DATA.data);
   const [data1, setData1] = useState(DATA.data1);
+  const [data2, setData2] = useState(DATA.data2);
 
   function randomDate() {
     const week = DATE
@@ -28,12 +29,16 @@ function Body(props) {
   }
 
   function randomData1() {
-    return Math.trunc(Math.random() * 100 + 10);
+    return Math.trunc(Math.random() * 100);
+  }
+  function randomData2() {
+    return Math.trunc(Math.random() * 100);
   }
 
   const handleAddData = () => {
     let newData = [...data];
     let newData1 = [...data1]
+    let newData2 = [...data2]
 
     const newPoint = {
       date: randomDate(),
@@ -48,6 +53,13 @@ function Body(props) {
     }
     newData1.push(newPoint1);
     setData1(newData1);
+
+    const newPoint2 = {
+      date: randomDate(),
+      quantity: randomData2(),
+    }
+    newData2.push(newPoint2);
+    setData2(newData2);
   }
 
   const handleRemoveData = () => {
@@ -58,6 +70,10 @@ function Body(props) {
     const newData1 = [...data1];
     newData1.pop();
     setData1(newData1);
+
+    const newData2 = [...data2];
+    newData2.pop();
+    setData2(newData2);
   }
 
   useEffect(() => {
@@ -77,15 +93,14 @@ function Body(props) {
 
   return (
     <div className="s__body">
-      {console.log(data)}
       <div className="body">
         <Search />
-        <Chart data={data} data1={data1} />
+        <Chart data={data} data1={data1} data2={data2} />
       </div>
       <div className="footer">
-        <Button color="warning" onClick={handleAddData}>Add</Button>
-        <Button color="warning" onClick={() => setChange(prevChange => !prevChange)}>{change ? 'Stop' : 'Add Interval'}</Button>
-        <Button onClick={handleRemoveData} color="danger">Remove</Button>
+        <button className={`btn ${change ? 'disabled' : ''}`} onClick={handleAddData}>Add</button>
+        <button className="btn" onClick={() => setChange(prevChange => !prevChange)}>{change ? 'Stop' : 'Add Interval'}</button>
+        <button className={`btn ${change ? 'disabled' : ''}`} onClick={handleRemoveData} color="danger">Remove</button>
       </div>
     </div>
   );

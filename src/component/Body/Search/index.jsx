@@ -29,7 +29,7 @@ function Search(props) {
             defaultValue="2020-01-20"
           ></Input>
         </div>
-        <Button className="search__input-item search__btn-search" color="warning" onClick={() => alert("just only UI -__-")}>TRA CỨU</Button>
+        <button className="search__input-item search__btn-search" onClick={() => alert("just only UI -__-")}>TRA CỨU</button>
         <div className="search__input-item search__icon">
           {/* <i class="far fa-chart-bar"></i>
           <i class="fas fa-calculator"></i> */}
