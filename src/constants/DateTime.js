@@ -1,12 +1,7 @@
-function getDate() {
-  const date=[];
+import moment from 'moment';
 
-  for(let i=1;i<31;i++){
-    date.push(`${i}/01`);
-  }
-  return date;
+export function nextDate(date) {
+  const DATE_FORMAT="DD/MM";
+  return moment(date, DATE_FORMAT).add(1, "days").format(DATE_FORMAT);
 }
 
-const DATE = getDate();
-
-export default DATE;
