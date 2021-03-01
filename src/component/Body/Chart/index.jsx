@@ -7,14 +7,16 @@ import colorLineChart from '../../../constants/colorLine.json';
 
 Chart.propTypes = {
   data: PropTypes.array,
+  onChangeChart: PropTypes.func,
 };
 Chart.defaultProps = {
   data: [],
+  onChangeChart: null,
 }
 
 function Chart(props) {
 
-  const { data } = props
+  const { data } = props ?? {};
 
   let fetchDate = data[0].data.map(item => item.date);
 

@@ -1,91 +1,95 @@
 {
-  "database": [
-    {
-      "name": "Qũy A",
-      "data": [
-        {
-          "date": "1/01",
-          "quantity": 54
-        },
-        {
-          "date": "2/01",
-          "quantity": 12
-        },
-        {
-          "date": "3/01",
-          "quantity": 40
-        },
-        {
-          "date": "4/01",
-          "quantity": 57
-        },
-        {
-          "date": "5/01",
-          "quantity": 70
-        },
-        {
-          "date": "6/01",
-          "quantity": 12
-        }
-      ]
-    },
-    {
-      "name": "Quỹ B",
-      "data": [
-        {
-          "date": "1/01",
-          "quantity": 10
-        },
-        {
-          "date": "2/01",
-          "quantity": 40
-        },
-        {
-          "date": "3/01",
-          "quantity": 24
-        },
-        {
-          "date": "4/01",
-          "quantity": 5
-        },
-        {
-          "date": "5/01",
-          "quantity": 90
-        },
-        {
-          "date": "6/01",
-          "quantity": 54
-        }
-      ]
-    },
-    {
-      "name": "Quỹ C",
-      "data": [
-        {
-          "date": "1/01",
-          "quantity": 78
-        },
-        {
-          "date": "2/01",
-          "quantity": 25
-        },
-        {
-          "date": "3/01",
-          "quantity": 46
-        },
-        {
-          "date": "4/01",
-          "quantity": 3
-        },
-        {
-          "date": "5/01",
-          "quantity": 46
-        },
-        {
-          "date": "6/01",
-          "quantity": 15
-        }
-      ]
-    }
-  ]
+  "database": 
+  {
+    "name": "Tất cả các quỹ",
+    "child":[
+      {
+        "name": "Quỹ A",
+        "data": [
+          {
+            "date": "1/01",
+            "quantity": 54
+          },
+          {
+            "date": "2/01",
+            "quantity": 12
+          },
+          {
+            "date": "3/01",
+            "quantity": 40
+          },
+          {
+            "date": "4/01",
+            "quantity": 57
+          },
+          {
+            "date": "5/01",
+            "quantity": 70
+          },
+          {
+            "date": "6/01",
+            "quantity": 12
+          }
+        ]
+      },
+      {
+        "name": "Quỹ B",
+        "data": [
+          {
+            "date": "1/01",
+            "quantity": 10
+          },
+          {
+            "date": "2/01",
+            "quantity": 40
+          },
+          {
+            "date": "3/01",
+            "quantity": 24
+          },
+          {
+            "date": "4/01",
+            "quantity": 5
+          },
+          {
+            "date": "5/01",
+            "quantity": 90
+          },
+          {
+            "date": "6/01",
+            "quantity": 54
+          }
+        ]
+      },
+      {
+        "name": "Quỹ C",
+        "data": [
+          {
+            "date": "1/01",
+            "quantity": 78
+          },
+          {
+            "date": "2/01",
+            "quantity": 25
+          },
+          {
+            "date": "3/01",
+            "quantity": 46
+          },
+          {
+            "date": "4/01",
+            "quantity": 3
+          },
+          {
+            "date": "5/01",
+            "quantity": 46
+          },
+          {
+            "date": "6/01",
+            "quantity": 15
+          }
+        ]
+      }
+    ]
+  }
 }

@@ -1,47 +1,97 @@
 import React, { useState } from 'react';
 import './Search.scss';
-import { Input } from 'reactstrap';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 import DATA from '../../../constants/data.json';
 
-Search.propTypes = {
+import Dropdown from '../../../assets/images/Shape.svg';
+import PropTypes from 'prop-types';
 
+Search.propTypes = {
+  onChangeName: PropTypes.string,
+  onChangeDate: PropTypes.string,
+  onSearch: PropTypes.func,
 };
 
+Search.defaultProps = {
+  onChangeName: '',
+  onChangeDate: '',
+  onSearch: null,
+}
+
 function Search(props) {
-  const [change, setChange] = useState(0);
+  const { onChangeName, onShowAll, onChangeDate, onSearch } = props ?? {}
+
+  const [change, setChange] = useState(DATA.database.name);
+  const [showLabel, setShowLabel] = useState(true);
+  const [startDate, setStartDate] = useState(new Date('2020/01/01'));
+  const [endDate, setEndDate] = useState(new Date('2020/06/01'));
 
   const handleSearch = () => {
-    console.log('handle');
   }
 
   return (
     <div className="background">
+      {!showLabel && <div className="close1" onClick={() => setShowLabel(pre => !pre)}></div>}
       <div className="search">
-        <div className="search__input-item search__input-option">
-          <Input
-            type="select"
-            name="select"
-            id="select"
-            onChange={(e) => console.log('asdas', e.target.value)}
-          //value={change}
-          >
-            <option value="0">Tất cả các quỹ</option>
+        <div
+          className="search__input-item search__input-option"
+          onClick={() => setShowLabel(pre => !pre)}
+        >
+          <ul className="select">
+            <p>{change}</p>
             {
-              DATA.database.map((item, index) => (
-                <option key={index} value={`${index + 1}`}>{item.name}</option>
-              ))
+              <>
+                <li
+                  className={DATA.database.name == change ? 'active' : ''}
+                  style={showLabel ? { display: 'none' } : { display: 'block' }}
+                  onClick={() => {
+                    setChange(DATA.database.name);
+                  }}
+                >{DATA.database.name}</li>
+                {
+                  DATA.database.child.map((item, index) => (
+                    <li
+                      className={item.name == change ? 'active' : ''}
+                      style={showLabel ? { display: 'none' } : { display: 'block' }}
+                      key={index}
+                      onClick={() => {
+                        setChange(item.name);
+                        onChangeName(item);
+                      }}
+                    >
+                      {item.name}
+                    </li>
+                  ))
+                }
+              </>
             }
-          </Input>
+          </ul>
+          <div className="icon__dropdown">
+            <img src={Dropdown} />
+          </div>
         </div>
         <div className="search__input-item search__input-date">
-          <Input
-            type="date"
-            name="date"
-            id="date"
-            defaultValue="2020-01-20"
-          ></Input>
+          <DatePicker
+            className="start"
+            selected={startDate}
+            onChange={date => setStartDate(date)}
+            selectsStart
+            startDate={startDate}
+            endDate={endDate}
+          /><span>-</span>
+          <DatePicker
+            className="end"
+            selected={endDate}
+            onChange={date => setEndDate(date)}
+            selectsEnd
+            startDate={startDate}
+            endDate={endDate}
+            minDate={startDate}
+          />
         </div>
-        <button className="search__input-item search__btn-search" onClick={() => handleSearch()}>TRA CỨU</button>
+        <button className="search__input-item search__btn-search" onClick={handleSearch}>TRA CỨU</button>
         <div className="search__input-item search__icon">
           <svg id="Group_1" data-name="Group 1" xmlns="http://www.w3.org/2000/svg" width="27.701" height="28" viewBox="0 0 27.701 28">
             <path id="Path_1" data-name="Path 1" d="M16.427,16.341H11.28a.78.78,0,0,0-.78.78v10.1a.78.78,0,0,0,.78.78h5.147a.78.78,0,0,0,.78-.78v-10.1A.78.78,0,0,0,16.427,16.341Zm-.78,10.1H12.06V17.9h3.587Z" fill="#e87722" />
@@ -59,7 +109,7 @@ function Search(props) {
           </svg>
         </div>
       </div>
-    </div>
+    </div >
 
   );
 }

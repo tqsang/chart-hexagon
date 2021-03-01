@@ -13,7 +13,7 @@ Body.propTypes = {
 function Body(props) {
 
   const [change, setChange] = useState(false);
-  const [data, setData] = useState(DATA.database);
+  const [data, setData] = useState(DATA.database.child);
 
   function randomData() {
     return Math.trunc(Math.random() * 100);
@@ -39,15 +39,11 @@ function Body(props) {
   }
 
   const handleRemoveData = () => {
-    const removeData = data.map((item) => {
-      const newData = [...item.data];
-      newData.pop();
-      return {
-        name: item.name,
-        data: newData,
-      }
+    const removeData = data.map(item => {
+      item.data.pop()
+      return item
     })
-    setData(removeData);
+    setData([...removeData]);
   }
 
   useEffect(() => {
@@ -65,10 +61,25 @@ function Body(props) {
     }
   });
 
+  const handleChangeName = (e) => {
+    console.log(e.name);
+    const filter = DATA.database.child.filter((item) => item.name === e.name);
+    setData(filter);
+  }
+
+  const handleChangeDate = () => {
+
+  }
+
+  const handleSearch = () => {
+    handleChangeName();
+  }
+
+
   return (
     <div className="s__body">
       <div className="body">
-        <Search />
+        <Search onChangeName={handleChangeName} onChangeDate={handleChangeDate} handleSearch={handleSearch} />
         <Chart data={data} />
       </div>
       <div className="footer">
