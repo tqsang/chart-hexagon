@@ -6,29 +6,42 @@ import "react-datepicker/dist/react-datepicker.css";
 import DATA from '../../../constants/data.json';
 
 import Dropdown from '../../../assets/images/Shape.svg';
+import IconDate from '../../../assets/images/Vector.svg';
 import PropTypes from 'prop-types';
 
 Search.propTypes = {
-  onChangeName: PropTypes.string,
-  onChangeDate: PropTypes.string,
   onSearch: PropTypes.func,
+  onChangeDate: PropTypes.func,
 };
 
 Search.defaultProps = {
-  onChangeName: '',
-  onChangeDate: '',
   onSearch: null,
+  onChangeDate: null,
 }
 
 function Search(props) {
-  const { onChangeName, onShowAll, onChangeDate, onSearch } = props ?? {}
+  const { onSearch, onChangeDate } = props ?? {}
 
   const [change, setChange] = useState(DATA.database.name);
   const [showLabel, setShowLabel] = useState(true);
-  const [startDate, setStartDate] = useState(new Date('2020/01/01'));
-  const [endDate, setEndDate] = useState(new Date('2020/06/01'));
+  const [showDatePicker, setShowPicker] = useState(true);
+  const [startDate, setStartDate] = useState(new Date('01/01/2021'));
+  const [endDate, setEndDate] = useState(new Date());
 
   const handleSearch = () => {
+    onSearch(change)
+    onChangeDate(startDate, endDate);
+  }
+
+  const showDate = (newDate) => {
+    const dateObj = new Date(newDate);
+    const month = dateObj.getUTCMonth() + 1;
+    const day = dateObj.getUTCDate();
+    const year = dateObj.getUTCFullYear();
+
+    newDate = day + "/" + month + "/" + year;
+
+    return newDate
   }
 
   return (
@@ -44,7 +57,7 @@ function Search(props) {
             {
               <>
                 <li
-                  className={DATA.database.name == change ? 'active' : ''}
+                  className={DATA.database.name === change ? 'active' : ''}
                   style={showLabel ? { display: 'none' } : { display: 'block' }}
                   onClick={() => {
                     setChange(DATA.database.name);
@@ -53,12 +66,11 @@ function Search(props) {
                 {
                   DATA.database.child.map((item, index) => (
                     <li
-                      className={item.name == change ? 'active' : ''}
+                      className={item.name === change ? 'active' : ''}
                       style={showLabel ? { display: 'none' } : { display: 'block' }}
                       key={index}
                       onClick={() => {
                         setChange(item.name);
-                        onChangeName(item);
                       }}
                     >
                       {item.name}
@@ -69,27 +81,16 @@ function Search(props) {
             }
           </ul>
           <div className="icon__dropdown">
-            <img src={Dropdown} />
+            <img src={Dropdown} alt="drop down" />
           </div>
         </div>
         <div className="search__input-item search__input-date">
-          <DatePicker
-            className="start"
-            selected={startDate}
-            onChange={date => setStartDate(date)}
-            selectsStart
-            startDate={startDate}
-            endDate={endDate}
-          /><span>-</span>
-          <DatePicker
-            className="end"
-            selected={endDate}
-            onChange={date => setEndDate(date)}
-            selectsEnd
-            startDate={startDate}
-            endDate={endDate}
-            minDate={startDate}
-          />
+          <p>{showDate(startDate)} - {showDate(endDate)}</p>
+
+          <div className="icon__date" onClick={() => setShowPicker(pre => !pre)}>
+            <img src={IconDate} alt="date picker" />
+          </div>
+
         </div>
         <button className="search__input-item search__btn-search" onClick={handleSearch}>TRA CỨU</button>
         <div className="search__input-item search__icon">
@@ -107,6 +108,30 @@ function Search(props) {
             <path id="Path_9" data-name="Path 9" d="M20.049,17.5H4.252a.584.584,0,1,1,0-1.167h15.8a.584.584,0,1,1,0,1.167Z" fill="#0a3b32" />
             <path id="Path_10" data-name="Path 10" d="M20.049,21H4.252a.584.584,0,1,1,0-1.167h15.8a.584.584,0,1,1,0,1.167Z" fill="#0a3b32" />
           </svg>
+        </div>
+      </div>
+      <div className="body-date-picker">
+        <div className={showDatePicker ? "disable" : 'date-picker'}>
+          <DatePicker
+            dateFormat="dd/MM/yyyy"
+            selected={startDate}
+            onChange={date => setStartDate(date)}
+            selectsStart
+            startDate={startDate}
+            endDate={endDate}
+            inline
+          />
+          <DatePicker
+            dateFormat="dd/MM/yyyy"
+            selected={endDate}
+            onChange={date => setEndDate(date)}
+            selectsEnd
+            startDate={startDate}
+            endDate={endDate}
+            minDate={startDate}
+            inline
+          />
+          <button className="btn-ok" onClick={() => setShowPicker(pre => !pre)}>OK</button>
         </div>
       </div>
     </div >

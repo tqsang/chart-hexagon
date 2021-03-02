@@ -6,6 +6,7 @@
 
   display: flex;
   align-items: center;
+  flex-direction: column;
 
   background-color: #FFFFFF;
   border-radius: 4px;
@@ -18,6 +19,24 @@
     position: absolute;
 
     background-color:rgba($color: #FFFFFF, $alpha: 0);
+  }
+
+  .date-picker {
+    position: absolute;
+    right:40%;
+    display: flex;
+
+    .btn-ok {
+      height: 62.281px;
+      width: 40px;
+
+      background-color: #E87722;
+      color: #FFFFFF;
+      border: 1px solid #E87722;
+    }
+    .react-datepicker {
+      height: 271.75px;
+    }
   }
 
   .search {
@@ -121,13 +140,49 @@
       display: flex;
       align-items: center;
 
+      position: relative;
+
+
       border: 1px solid #DBDFE1;
       border-radius: 4px;
 
-      background-image: url(../../../assets/images/Vector.svg);
-      background-repeat: no-repeat;
-      background-position-x: 90%;
-      background-position-y: center;
+      // .date-picker {
+      //   display: flex;
+      //   position: relative;
+
+      //   &:first-child{
+      //     height: 800px;
+      //     width: 900px;
+      //     position: absolute;
+      //     bottom: 0;
+      //   }
+
+      // }
+
+      p {
+        width: 100%;
+        margin: 0;
+        padding-left: 20px;
+        
+        position: absolute;
+        left: 0;
+
+        text-align: left;
+
+        color: #E87722;
+      }
+
+      .icon__date {
+        height: 44px;
+        width: 275px;
+        position: relative;
+
+        img {
+          position: absolute;
+          top: 14.22px;
+          right: 17.5px;
+        }
+      }
 
       .start {
         padding-left: 20px;
@@ -135,23 +190,6 @@
 
       span {
         color: #E87722;
-      }
-
-      .react-datepicker-wrapper{
-
-        .react-datepicker__input-container{
-
-          input {
-            width: 110px;
-            border: none;
-
-            text-align: left;
-
-            font-size: 16px;
-
-            color: #E87722;
-          }
-        }
       }
     }
     &__btn-search {
@@ -193,6 +231,9 @@
       }
     }
   }
+}
+.disable {
+  display: none;
 }
 
 

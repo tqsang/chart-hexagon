@@ -7,27 +7,27 @@
         "name": "Quỹ A",
         "data": [
           {
-            "date": "1/01",
+            "date": "01/01/2021",
             "quantity": 54
           },
           {
-            "date": "2/01",
+            "date": "02/01/2021",
             "quantity": 12
           },
           {
-            "date": "3/01",
+            "date": "03/01/2021",
             "quantity": 40
           },
           {
-            "date": "4/01",
+            "date": "04/01/2021",
             "quantity": 57
           },
           {
-            "date": "5/01",
+            "date": "05/01/2021",
             "quantity": 70
           },
           {
-            "date": "6/01",
+            "date": "06/01/2021",
             "quantity": 12
           }
         ]
@@ -36,27 +36,27 @@
         "name": "Quỹ B",
         "data": [
           {
-            "date": "1/01",
+            "date": "01/01/2021",
             "quantity": 10
           },
           {
-            "date": "2/01",
+            "date": "02/01/2021",
             "quantity": 40
           },
           {
-            "date": "3/01",
+            "date": "03/01/2021",
             "quantity": 24
           },
           {
-            "date": "4/01",
+            "date": "04/01/2021",
             "quantity": 5
           },
           {
-            "date": "5/01",
+            "date": "05/01/2021",
             "quantity": 90
           },
           {
-            "date": "6/01",
+            "date": "06/01/2021",
             "quantity": 54
           }
         ]
@@ -65,27 +65,27 @@
         "name": "Quỹ C",
         "data": [
           {
-            "date": "1/01",
+            "date": "01/01/2021",
             "quantity": 78
           },
           {
-            "date": "2/01",
+            "date": "02/01/2021",
             "quantity": 25
           },
           {
-            "date": "3/01",
+            "date": "03/01/2021",
             "quantity": 46
           },
           {
-            "date": "4/01",
+            "date": "04/01/2021",
             "quantity": 3
           },
           {
-            "date": "5/01",
+            "date": "05/01/2021",
             "quantity": 46
           },
           {
-            "date": "6/01",
+            "date": "06/01/2021",
             "quantity": 15
           }
         ]

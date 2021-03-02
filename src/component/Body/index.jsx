@@ -11,9 +11,10 @@ Body.propTypes = {
 };
 
 function Body(props) {
+  const initialValue = DATA.database.child;
 
   const [change, setChange] = useState(false);
-  const [data, setData] = useState(DATA.database.child);
+  const [data, setData] = useState(initialValue);
 
   function randomData() {
     return Math.trunc(Math.random() * 100);
@@ -61,25 +62,46 @@ function Body(props) {
     }
   });
 
-  const handleChangeName = (e) => {
-    console.log(e.name);
-    const filter = DATA.database.child.filter((item) => item.name === e.name);
-    setData(filter);
+  const handleSearch = (value) => {
+
+    const filter = DATA.database.child.filter((item) => item.name === value);
+    if (filter.length !== 0) {
+      setData(filter);
+    } else {
+      setData(DATA.database.child);
+    }
   }
 
-  const handleChangeDate = () => {
+  const handleChangDate = (start, end) => {
+    start = new Date(start).getTime();
+    end = new Date(end).getTime();
 
+    const newData = [];
+    console.log('start', start);
+    for (const data of initialValue) {
+
+      const newDataItem = [];
+
+      for (const item of data.data) {
+        const date = Date.parse(item.date);
+        if (date > start && date < end) {
+          console.log('list', date)
+          newDataItem.push(item);
+        }
+      }
+      newData.push({ name: data.name, data: newDataItem })
+    }
+    setData(newData);
+    console.log('newData', newData);
+
+
+    console.log('start', end)
   }
-
-  const handleSearch = () => {
-    handleChangeName();
-  }
-
 
   return (
     <div className="s__body">
       <div className="body">
-        <Search onChangeName={handleChangeName} onChangeDate={handleChangeDate} handleSearch={handleSearch} />
+        <Search onChangeDate={handleChangDate} onSearch={handleSearch} />
         <Chart data={data} />
       </div>
       <div className="footer">

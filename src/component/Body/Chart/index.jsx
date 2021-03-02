@@ -18,8 +18,10 @@ function Chart(props) {
 
   const { data } = props ?? {};
 
-  let fetchDate = data[0].data.map(item => item.date);
+  console.log('data', data);
 
+  let fetchDate = data[0].data.map((item) => item.date);
+  console.log(('fecth', fetchDate));
   let fetchData = data.map((item, index) => {
     const lineColor = index < colorLineChart.colors.length
       ? colorLineChart.colors[index]
