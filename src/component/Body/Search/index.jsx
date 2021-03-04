@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Search.scss';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import moment from 'moment';
 
 import DATA from '../../../constants/data.json';
 
@@ -10,27 +11,29 @@ import IconDate from '../../../assets/images/Vector.svg';
 import PropTypes from 'prop-types';
 
 Search.propTypes = {
-  onSearch: PropTypes.func,
+  onChangeLabel: PropTypes.func,
   onChangeDate: PropTypes.func,
 };
 
 Search.defaultProps = {
-  onSearch: null,
+  onChangeLabel: null,
   onChangeDate: null,
 }
 
 function Search(props) {
-  const { onSearch, onChangeDate } = props ?? {}
+  const { onChangeLabel, onChangeDate } = props ?? {}
+
+  const lastDate = DATA.database.child[0].data.slice(-1)[0].date;
 
   const [change, setChange] = useState(DATA.database.name);
   const [showLabel, setShowLabel] = useState(true);
   const [showDatePicker, setShowPicker] = useState(true);
   const [startDate, setStartDate] = useState(new Date('01/01/2021'));
-  const [endDate, setEndDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date(moment(lastDate, 'MM/DD/YYYY').add('days', 1).format('MM/DD/YYYY')));
 
   const handleSearch = () => {
-    onSearch(change)
     onChangeDate(startDate, endDate);
+    onChangeLabel(change);
   }
 
   const showDate = (newDate) => {
@@ -39,7 +42,7 @@ function Search(props) {
     const day = dateObj.getUTCDate();
     const year = dateObj.getUTCFullYear();
 
-    newDate = day + "/" + month + "/" + year;
+    newDate = `${month}/${day}/${year}`;
 
     return newDate
   }
@@ -61,6 +64,7 @@ function Search(props) {
                   style={showLabel ? { display: 'none' } : { display: 'block' }}
                   onClick={() => {
                     setChange(DATA.database.name);
+                    onChangeLabel(DATA.database.name);
                   }}
                 >{DATA.database.name}</li>
                 {
@@ -71,6 +75,7 @@ function Search(props) {
                       key={index}
                       onClick={() => {
                         setChange(item.name);
+                        onChangeLabel(item.name)
                       }}
                     >
                       {item.name}
@@ -85,14 +90,18 @@ function Search(props) {
           </div>
         </div>
         <div className="search__input-item search__input-date">
-          <p>{showDate(startDate)} - {showDate(endDate)}</p>
+          <p>{showDate(startDate)} - {showDate(moment(endDate, 'MM/DD/YYYY').add('days', 1).format('MM/DD/YYYY'))}</p>
 
           <div className="icon__date" onClick={() => setShowPicker(pre => !pre)}>
             <img src={IconDate} alt="date picker" />
           </div>
 
         </div>
-        <button className="search__input-item search__btn-search" onClick={handleSearch}>TRA CỨU</button>
+        <button
+          className="search__input-item search__btn-search"
+          onClick={handleSearch}
+        >TRA CỨU
+        </button>
         <div className="search__input-item search__icon">
           <svg id="Group_1" data-name="Group 1" xmlns="http://www.w3.org/2000/svg" width="27.701" height="28" viewBox="0 0 27.701 28">
             <path id="Path_1" data-name="Path 1" d="M16.427,16.341H11.28a.78.78,0,0,0-.78.78v10.1a.78.78,0,0,0,.78.78h5.147a.78.78,0,0,0,.78-.78v-10.1A.78.78,0,0,0,16.427,16.341Zm-.78,10.1H12.06V17.9h3.587Z" fill="#e87722" />
@@ -121,17 +130,20 @@ function Search(props) {
             endDate={endDate}
             inline
           />
-          <DatePicker
-            dateFormat="dd/MM/yyyy"
-            selected={endDate}
-            onChange={date => setEndDate(date)}
-            selectsEnd
-            startDate={startDate}
-            endDate={endDate}
-            minDate={startDate}
-            inline
-          />
-          <button className="btn-ok" onClick={() => setShowPicker(pre => !pre)}>OK</button>
+          <div className="end">
+            <DatePicker
+              dateFormat="dd/MM/yyyy"
+              selected={endDate}
+              onChange={date => setEndDate(date)}
+              selectsEnd
+              startDate={startDate}
+              endDate={endDate}
+              minDate={startDate}
+              inline
+            />
+            <button className="btn-ok" onClick={() => setShowPicker(pre => !pre)}>OK</button>
+          </div>
+
         </div>
       </div>
     </div >

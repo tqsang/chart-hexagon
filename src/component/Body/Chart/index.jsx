@@ -5,6 +5,8 @@ import './Chart.scss';
 import Legend from './Legend';
 import colorLineChart from '../../../constants/colorLine.json';
 
+import moment from 'moment';
+
 Chart.propTypes = {
   data: PropTypes.array,
   onChangeChart: PropTypes.func,
@@ -14,15 +16,11 @@ Chart.defaultProps = {
   onChangeChart: null,
 }
 
-function Chart(props) {
+function Chart({ data, label }) {
 
-  const { data } = props ?? {};
+  let fetchDate = data[0].data.map((item) => moment(item.date, 'MM/DD').format('MM/DD'));
 
-  console.log('data', data);
-
-  let fetchDate = data[0].data.map((item) => item.date);
-  console.log(('fecth', fetchDate));
-  let fetchData = data.map((item, index) => {
+  let fetchData = (label === "Tất cả các quỹ" ? data : data.filter(i => i.name === label)).map((item, index) => {
     const lineColor = index < colorLineChart.colors.length
       ? colorLineChart.colors[index]
       : colorLineChart.colorsDefault;
@@ -40,7 +38,7 @@ function Chart(props) {
   });
   return (
     <>
-      <Legend />
+      {/* <Legend /> */}
       <div className="chart">
         <Line
           data={{
@@ -74,12 +72,11 @@ function Chart(props) {
                   fontColor: '#0A3B32',
                   fontSize: 16,
                   fontFamily: 'FWDCircularVietTT-Book',
-                  padding: 29,
                 }
               }],
             },
             legend: {
-              display: false,
+              display: true,
               labels: {
                 fontColor: '#0A3B32',
                 fontSize: 16,
@@ -87,12 +84,12 @@ function Chart(props) {
 
                 boxWidth: 14,
               },
-              align: 'end',
+              align: 'center',
             },
             layout: {
               padding: {
                 left: 20,
-                right: 20,
+                right: 0,
                 top: 20,
                 bottom: 20,
 
@@ -142,7 +139,7 @@ function Chart(props) {
                   var innerHtml = '<thead>';
 
                   titleLines.forEach(function (title) {
-                    innerHtml += `<tr><th class="tooltil-css tooltip-title">Ngày: ${title}</th></tr>`;
+                    innerHtml += `<tr><th class="tooltil-css tooltip-title">Ngày: ${title}/2021</th></tr>`;
                   });
                   innerHtml += '</thead><tbody>';
 
@@ -173,7 +170,7 @@ function Chart(props) {
             }
           }}
           height={367}
-          width={1000}
+          width={1050}
         />
       </div>
     </>

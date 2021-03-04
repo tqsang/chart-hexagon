@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './Body.scss';
 import Chart from './Chart';
 import Search from './Search';
@@ -15,6 +15,7 @@ function Body(props) {
 
   const [change, setChange] = useState(false);
   const [data, setData] = useState(initialValue);
+  const [label, setLabel] = useState(DATA.database.name);
 
   function randomData() {
     return Math.trunc(Math.random() * 100);
@@ -62,47 +63,35 @@ function Body(props) {
     }
   });
 
-  const handleSearch = (value) => {
-
-    const filter = DATA.database.child.filter((item) => item.name === value);
-    if (filter.length !== 0) {
-      setData(filter);
-    } else {
-      setData(DATA.database.child);
-    }
-  }
-
-  const handleChangDate = (start, end) => {
+  const handleChangDate = useCallback((start, end) => {
+    console.log(label);
     start = new Date(start).getTime();
     end = new Date(end).getTime();
 
     const newData = [];
-    console.log('start', start);
+
     for (const data of initialValue) {
 
       const newDataItem = [];
 
       for (const item of data.data) {
         const date = Date.parse(item.date);
-        if (date > start && date < end) {
-          console.log('list', date)
+        if (date >= start && date <= end) {
           newDataItem.push(item);
         }
       }
       newData.push({ name: data.name, data: newDataItem })
     }
+
     setData(newData);
-    console.log('newData', newData);
-
-
-    console.log('start', end)
-  }
+  }, [])
 
   return (
     <div className="s__body">
       <div className="body">
-        <Search onChangeDate={handleChangDate} onSearch={handleSearch} />
-        <Chart data={data} />
+        <Search onChangeDate={handleChangDate} onChangeLabel={setLabel} />
+        <Chart data={data} label={label} />
+        {/* {console.log(data)} */}
       </div>
       <div className="footer">
         <button className={`btn ${change ? 'disabled' : ''}`} onClick={handleAddData}>Add</button>

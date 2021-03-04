@@ -13,8 +13,8 @@
 
   
   .close1 {
-    height: 100vh;
-    width: 100vh;
+    height: 500px;
+    width: 500px;
 
     position: absolute;
 
@@ -22,22 +22,40 @@
   }
 
   .date-picker {
+    width: 484.12px;
+    height: 310px;
     position: absolute;
-    right:40%;
+    left:27%;
     display: flex;
 
-    .btn-ok {
-      height: 62.281px;
-      width: 40px;
+    border-radius: 4px;
+    background-color: #DBDFE1;
 
-      background-color: #E87722;
-      color: #FFFFFF;
-      border: 1px solid #E87722;
-    }
     .react-datepicker {
       height: 271.75px;
     }
-  }
+    .end {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      position: relative;
+
+      .btn-ok {
+        height: 30px;
+        width: 60px;
+  
+        position: absolute;
+        right:10px;
+        bottom: 5px;
+  
+        background-color: #E87722;
+        color: #FFFFFF;
+        border: 1px solid #E87722;
+        border-radius: 4px;
+      }
+    }
+   }
 
   .search {
     display: flex;
@@ -146,19 +164,6 @@
       border: 1px solid #DBDFE1;
       border-radius: 4px;
 
-      // .date-picker {
-      //   display: flex;
-      //   position: relative;
-
-      //   &:first-child{
-      //     height: 800px;
-      //     width: 900px;
-      //     position: absolute;
-      //     bottom: 0;
-      //   }
-
-      // }
-
       p {
         width: 100%;
         margin: 0;
@@ -258,9 +263,12 @@
       }
       &__input-date {
         width: 100%;
-        #date {
-          height: 44px;
-          background-position-x: 95%;
+        
+        .icon__date {
+          width: 100%;
+          img {
+            right: 17.5px;
+          }
         }
       }
       &__btn-search {
@@ -271,61 +279,38 @@
         position: static;
       }
     }
+    .date-picker {
+      left: 18%;
+      top: 37%;
+    }
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px){
-  .search{
-    &__icon {
-      display: none;
-      #Group_1{
+  .background {
+    .search{
+      &__icon {
         display: none;
+        #Group_1{
+          display: none;
+        }
+        #Group_2{
+          display: none;
+        }
       }
-      #Group_2{
-        display: none;
+      &__btn-search {
+        margin-right: 24px;
+      }
+      &__input-date {
+        #date {
+          width: 200px;
+          color: #DBDFE1;
+        }
       }
     }
-    &__btn-search {
-      margin-right: 24px;
-    }
-    &__input-date {
-      #date {
-        width: 200px;
-        color: #DBDFE1;
-      }
+    .date-picker {
+      left: 18%;
+      top: 28%;
     }
   }
-}
 
-// @media only screen and (min-width: 740px) and (max-width: 767px) {
-//   .background {
-//     margin-bottom: 0px;
-//       .search {
-//         flex-direction: column;
-  
-//         &__input-item {
-//           margin-bottom: 14px;
-//           margin-left: 0px;
-          
-//         }
-//         &__input-option {
-//           width: 100%;
-//           #select {
-//             height: 44px;
-//           }
-//         }
-//         &__input-date {
-//           width: 100%;
-//           #date {
-//             height: 44px;
-//           }
-//         }
-//         &__btn-search {
-//           width: 100%;
-//           margin-right: 0px;
-//         }
-//         &__icon {
-//           position: static;
-//         }
-//       }
-//     }
-// }
+}
